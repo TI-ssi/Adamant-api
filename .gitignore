@@ -3,3 +3,11 @@
 Homestead.json
 Homestead.yaml
 .env
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+storage/*.key
+.env.*.php
+.env.php
+.env
