@@ -15,7 +15,6 @@ class CreateSettingTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('last_synced_block');
             $table->timestamps();
         });
     }
