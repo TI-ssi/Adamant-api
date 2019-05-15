@@ -29,15 +29,19 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
         });
                
         
-        $resources = [];
+        $resources = config('resource');
         foreach ($resources as $resource)
         {
-          $router->group(['prefix' => $resource], function () use ($router, $resource) {
-            $router->get('/', ['uses' => ucfirst($resource).'Controller@index']);
-            $router->post('/', ['uses' => ucfirst($resource).'Controller@store']);
-            $router->get('/{id}', ['uses' => ucfirst($resource).'Controller@show']);
-            $router->put('/{id}', ['uses' => ucfirst($resource).'Controller@update']);
-            $router->delete('/{id}', ['uses' => ucfirst($resource).'Controller@destroy']);
+            $resource = explode('.', $resource);
+            $router->group(['prefix' => implode('/', $resource)], function () use ($router, $resource) {
+                $resourceName = '';
+                foreach($resource as $res)  $resourceName .= ucfirst($res);
+                
+                $router->get('/', ['uses' => $resourceName.'Controller@index']);
+                $router->post('/', ['uses' => $resourceName.'Controller@store']);
+                $router->get('/{id}', ['uses' => $resourceName.'Controller@show']);
+                $router->put('/{id}', ['uses' => $resourceName.'Controller@update']);
+                $router->delete('/{id}', ['uses' => $resourceName.'Controller@destroy']);
           });
         }
 
