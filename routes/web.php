@@ -32,10 +32,13 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
         $resources = config('resource');
         foreach ($resources as $resource)
         {
+            $resourceFileName = $resource;
             $resource = explode('.', $resource);
-            $router->group(['prefix' => implode('/', $resource)], function () use ($router, $resource) {
+            $router->group(['prefix' => implode('/', $resource)], function () use ($router, $resource, $resourceFileName) {
                 $resourceName = '';
                 foreach($resource as $res)  $resourceName .= ucfirst($res);
+                
+                if(file_exists(__DIR__.'/'.$resourceFileName.'.php')) include(__DIR__.'/'.$resourceFileName.'.php');
                 
                 $router->get('/', ['uses' => $resourceName.'Controller@index']);
                 $router->post('/', ['uses' => $resourceName.'Controller@store']);
