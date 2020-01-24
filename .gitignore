@@ -3,6 +3,7 @@
 Homestead.json
 Homestead.yaml
 .env
+composer.lock
 
 # Laravel 5 & Lumen specific
 public/storage
