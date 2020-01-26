@@ -18,6 +18,7 @@ class CreateUserTable extends Migration
 	    $table->string('username');
 	    $table->string('password');
             $table->timestamps();
+	    $table->dateTime('last_detected_loged_date');
         });
     }
 
