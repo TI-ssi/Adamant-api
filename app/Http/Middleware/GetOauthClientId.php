@@ -6,7 +6,7 @@ use Closure;
 use League\OAuth2\Server\ResourceServer;
 use Illuminate\Auth\AuthenticationException;
 use League\OAuth2\Server\Exception\OAuthServerException;
-use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
+//use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 
 class GetOauthClientId
 {
@@ -38,7 +38,10 @@ class GetOauthClientId
      */
     public function handle($request, Closure $next)
     {
-        $psr = (new DiactorosFactory)->createRequest($request);
+	//temp disable to find another solution and check if still needed
+        return $next($request);
+
+	$psr = (new DiactorosFactory)->createRequest($request);
 
         try {
             $psr = $this->server->validateAuthenticatedRequest($psr);
