@@ -61,3 +61,4 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
 //public call
 $router->get('/', ['uses' => 'ServiceAvailabilityController@getResponse']);
 $router->post('/', ['uses' => 'ServiceAvailabilityController@postResponse']);
+$router->options('/', ['uses' => 'ServiceAvailabilityController@optionsResponse']);

@@ -10,7 +10,12 @@ class BaseController extends LumenBaseController
     public function success($data, $code = 200){
         Log::debug('Returned result : ', [json_encode(['data' => $data])]);
 
-        return response()->json(['data' => $data], $code);
+	return response()->json(['data' => $data], $code, [
+                        'Access-Control-Allow-Origin' => '*',
+			'Access-Control-Allow-Headers' => '*'
+        ]);
+
+
     }
 
     public function error($message, $code = 400, $ex = null){

@@ -18,6 +18,11 @@ class ServiceAvailabilityController extends BaseController
          return $this->success(['message' => 'This is a Post response.']);
     }
 
+    public function optionsResponse(){
+	 return $this->success(['message' => 'This is a Options response.']);
+    }
+
+
     public function getAuthResponse(){
          return $this->success(['message' => 'This is an authenticated Get response.']);
     }
