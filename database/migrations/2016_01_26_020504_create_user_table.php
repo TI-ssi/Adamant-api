@@ -18,7 +18,7 @@ class CreateUserTable extends Migration
 	    $table->string('username');
 	    $table->string('password');
             $table->timestamps();
-	    $table->dateTime('last_detected_loged_date')->default('0000-00-00 00:00:00');
+	    $table->dateTime('last_detected_loged_date')->nullable();
         });
     }
 
